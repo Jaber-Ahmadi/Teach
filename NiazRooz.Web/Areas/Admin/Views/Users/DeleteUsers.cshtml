@@ -1,0 +1,68 @@
+﻿@using NiazRooz.Utility
+@model NiazRooz.DTO.InformationUserViewModel
+
+@{
+    ViewData["Title"] = "حذف کاربر";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/">نیاز روز</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li class="active">حذف کاربر</li>
+    </ul><!--.breadcrumb-->
+</div>
+<br />
+
+<div class="col-md-10">
+    <div class="panel">
+        <div class="admintableheading text-center">
+            <div class="panel-heading">
+                <i>
+                    حذف کاربر
+                </i>
+            </div>
+        </div>
+        <div class="admintablebody">
+            <div class="panel-body">
+                <form asp-action="DeleteUsers" method="post">
+                    <input type="hidden" name="UserId" value="@ViewData["UserId"].ToString()" />
+
+                    <dl class="dl-horizontal">
+                        <dt>نام کاربری : </dt>
+                        <dd>@Model.UserName</dd>
+                        <dt>ایمیل : </dt>
+                        <dd>@Model.Email</dd>
+                        <dt>تاریخ عضویت : </dt>
+                        <dd>@Model.RegisterDate.ToShamsi()</dd>
+                        <dt>تصویر کاربر : </dt>
+                        <dd>
+                            <img id="imgAvatar" class="thumbnail" src="/UserAvatar/@Model.AvatarName" />
+                        </dd>
+                        <dt>
+                        </dt>
+                        <dd>
+                            <input asp-action="DeleteUsers" type="submit" value="&nbsp;&nbsp; حذف کاربر &nbsp;&nbsp;  " class="btn  btn-danger" />
+                        </dd>
+                    </dl>
+                </form>
+
+            </div>
+            <!-- /.panel-body -->
+
+        </div>
+    </div>
+    <!-- /.panel -->
+
+</div>
+
+
+
+

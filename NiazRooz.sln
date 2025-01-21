@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.Web", "NiazRooz.Web\NiazRooz.Web.csproj", "{0A64EF23-5B06-4639-9AF9-AB51C022D6B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.Datalayer", "NiazRooz.Datalayer\NiazRooz.Datalayer.csproj", "{ADF3B748-69F2-495D-90E1-C1442FC2525D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.Services", "NiazRooz.Services\NiazRooz.Services.csproj", "{26E3A1C4-5257-479A-B642-FE3A8789B79B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.Test", "NiazRooz.Test\NiazRooz.Test.csproj", "{7B2C3500-15DD-4A1E-987A-12622DF450E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.DomainClasses", "NiazRooz.DomainClasses\NiazRooz.DomainClasses.csproj", "{CB1FD271-BB7D-41C3-99A8-7D0F01408DC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.Utility", "NiazRooz.Utility\NiazRooz.Utility.csproj", "{2063E12D-D55F-4051-A8CC-4D9715596AB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiazRooz.DTO", "NiazRooz.DTO\NiazRooz.DTO.csproj", "{E4795A40-7CEA-4FD1-AEA0-BF1D6868EDBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A64EF23-5B06-4639-9AF9-AB51C022D6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A64EF23-5B06-4639-9AF9-AB51C022D6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A64EF23-5B06-4639-9AF9-AB51C022D6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A64EF23-5B06-4639-9AF9-AB51C022D6B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF3B748-69F2-495D-90E1-C1442FC2525D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF3B748-69F2-495D-90E1-C1442FC2525D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF3B748-69F2-495D-90E1-C1442FC2525D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF3B748-69F2-495D-90E1-C1442FC2525D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26E3A1C4-5257-479A-B642-FE3A8789B79B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E3A1C4-5257-479A-B642-FE3A8789B79B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E3A1C4-5257-479A-B642-FE3A8789B79B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E3A1C4-5257-479A-B642-FE3A8789B79B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2C3500-15DD-4A1E-987A-12622DF450E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2C3500-15DD-4A1E-987A-12622DF450E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2C3500-15DD-4A1E-987A-12622DF450E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2C3500-15DD-4A1E-987A-12622DF450E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB1FD271-BB7D-41C3-99A8-7D0F01408DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB1FD271-BB7D-41C3-99A8-7D0F01408DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB1FD271-BB7D-41C3-99A8-7D0F01408DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB1FD271-BB7D-41C3-99A8-7D0F01408DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2063E12D-D55F-4051-A8CC-4D9715596AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2063E12D-D55F-4051-A8CC-4D9715596AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2063E12D-D55F-4051-A8CC-4D9715596AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2063E12D-D55F-4051-A8CC-4D9715596AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4795A40-7CEA-4FD1-AEA0-BF1D6868EDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4795A40-7CEA-4FD1-AEA0-BF1D6868EDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4795A40-7CEA-4FD1-AEA0-BF1D6868EDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4795A40-7CEA-4FD1-AEA0-BF1D6868EDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDFC8A5A-406D-4584-97E4-92533F74AD55}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,24 @@
+﻿#NiazRoozpagercolor {
+    background: rgba(140,170,255,20);
+    color: black;
+}
+#buttenforreloade {
+    background: rgba(121, 120, 170, 2);
+}
+#colortrtablegateparcellist {
+    background: rgba(43, 38, 59,2);
+    color: white;
+    font-size: 13px;
+}
+#colorcoloumfersttd {
+    background: rgba(101, 100, 140, 2);
+}
+#colorcoloumsecondtd {
+    background: rgba(161, 160, 220,2);
+}
+#colorcoloumthirdtd {
+    background: rgba(161, 160, 220,2);
+}
+#colorcoloumfourthtd {
+    background: rgba(200, 199, 252,2);
+}

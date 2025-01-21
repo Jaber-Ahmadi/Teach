@@ -1,0 +1,37 @@
+﻿@model NiazRooz.DomainClasses.Role
+@{
+    ViewData["Title"] = "حذف نقش";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/">نیاز روز</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li class="active">حذف نقش </li>
+    </ul><!--.breadcrumb-->
+</div>
+
+<br />
+<div class="container alert alert-danger">
+    <form asp-area="Admin" asp-controller="Roles" asp-action="DeleteRoles" method="post">
+        <input type="hidden" asp-for="RoleId" />
+        <input type="hidden" asp-for="RoleTitle" />
+        <input type="hidden" name="RoleId" value="@Model.RoleId" />
+        <input type="hidden" name="RoleTitle" value="@Model.RoleTitle" />
+        <h2>آیا از حذف نقش "@Model.RoleTitle" مطمئن هستید </h2>
+        <p>
+            <input asp-action="DeleteRoles" type="submit" value="حذف کن" class="btn btn-outline btn-danger" />
+            <a asp-action="Index" class="btn btn-outline btn-info">انصراف</a>
+        </p>
+    </form>
+</div>
+

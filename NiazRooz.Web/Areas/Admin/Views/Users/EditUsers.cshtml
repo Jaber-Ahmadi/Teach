@@ -1,0 +1,146 @@
+﻿
+@model NiazRooz.DTO.EditUserViewModel
+
+@{
+    ViewData["Title"] = "ویرایش کاربر";
+}
+
+
+<br />
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/">نیاز روز</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li class="active">ویرایش کاربر</li>
+    </ul><!--.breadcrumb-->
+</div>
+<br />
+
+<div class="row">
+    <form asp-action="EditUsers" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="AvatarName" />
+        <input type="hidden" asp-for="Roles">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            اطلاعات کاربر
+                        </i>
+                    </div>
+                    <!-- /.panel-heading -->
+                </div>
+                <div class="admintablebody">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>نام کاربری</label>
+                            <input type="text" asp-for="UserName" class="form-control">
+                            <span asp-validation-for="UserName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>ایمیل</label>
+                            <input type="email" asp-for="Email" class="form-control">
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>کلمه عبور</label>
+                            <input type="text" asp-for="Password" class="form-control">
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            <label>انتخاب نقش کاربر</label>
+                        </i>
+                    </div>
+                    <div class="admintablebody">
+                        @foreach (var item in Model.Roles)
+                        {
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="SelectedRoles" value="@item.RoleId" @((Model.UserRoles.Any(r => r == item.RoleId) ? "checked" : ""))>@item.RoleTitle
+                                </label>
+                            </div>
+                        }
+                        <span asp-validation-for="UserRoles"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel ">
+                <div class="admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            تصویر پروفایل
+                        </i>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="admintablebody">
+                    <!-- /.panel-heading -->
+                    <div class="panel-body text-center">
+                        @if (string.IsNullOrWhiteSpace(@Model.AvatarName))
+                        {
+                            <img id="imgAvatar" class=" img-thumbnail" src="/UserAvatar/Defult.jpg" />
+                        }
+                        else
+                        {
+                            <img class="thumbnail text-center" id="imgAvatarUserPanel" src="/UserAvatar/@Model.AvatarName" />
+                        }
+                        <input Id="AddUsersAvatar" type="file" asp-for="UserAvatar" style="visibility: hidden;">
+                        <p>
+                            <label for="AddUsersAvatar" class="btn btn-warning btn-block">
+                                <i class="zmdi zmdi-picture-in-picture" style="color: black;"> انتخاب تصویر مورد نظر</i>
+                            </label>
+                        </p>
+                        <p class="text-center" style="color: black;">
+                            لطفا فقط تصویر انتخاب کنید
+                        </p>
+                    </div>
+                    <span asp-validation-for="UserAvatar" class="text-danger"></span>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 text-center ">
+            <button asp-area="Admin" asp-action="EditUsers" class="btn btn-success btn-block" type="submit"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ذخیره اطلاعات &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </button>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts
+{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#CreateUserViewModel_UserAvatar").change(function () {
+            readURL(this);
+        });
+    </script>
+}

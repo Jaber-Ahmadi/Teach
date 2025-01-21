@@ -1,0 +1,45 @@
+﻿@model NiazRooz.DTO.LoginViewModel
+@{
+    ViewData["Title"] = "ورود به سایت";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<link href="~/Login/Login.css" rel="stylesheet" />
+
+
+<div id="container" class="container" style="display: block; transform: matrix(1, 0, 0, 1, 0, 0); left: 0px;">
+    <h1>ورود</h1>
+    <form style="direction:rtl" asp-action="Login" method="post">
+        <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+        <input asp-for="Email" type="email" name="email" placeholder="ایمیل">
+        <span asp-validation-for="Email" style="color:red"></span>
+        <input asp-for="Password" type="password" placeholder="کلمه عبور">
+        <span asp-validation-for="Password" style="color:red ;text-align:center"></span>
+        <div id="remember-container">
+            <input asp-for="RememberMe" type="checkbox" style="direction:rtl" id="checkbox-2-1" class="checkbox" checked="checked" />
+            <span id="remember">مرا بخاطر بسپار </span>
+
+        </div>
+        <button class="hoverBtn" id="aLink">ورود</button>
+        <a href="/Register" onclick="show_box('signup-box'); return false;" class="user-signup-link">
+            ثبت نام
+            <i class="icon-arrow-right"></i>
+        </a>
+        <div id="remember-container">
+
+            <span id="forgotten">
+                <a href="/ForgotPassword">کلمه عبور خود را فراموش کرده اید؟</a>
+            </span>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script src="~/Login/Login.Js"></script>
+
+
+
+

@@ -1,0 +1,113 @@
+﻿@using NiazRooz.DomainClasses.Permissions
+@model NiazRooz.DomainClasses.Role
+@{
+    ViewData["Title"] = "ویرایش نقش";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<Permission> permissions = ViewData["Permissions"] as List<Permission>;
+}
+
+
+<br />
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/">نیاز روز</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li class="active">ویرایش نقش </li>
+    </ul><!--.breadcrumb-->
+</div>
+
+
+<br />
+<div class="row">
+    <form asp-action="EditRoles" method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="text-center admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            ویرایش نقش "@Model.RoleTitle"
+                        </i>
+                    </div>
+                    <!-- /.panel-heading -->
+                </div>
+                <div class="admintablebody">
+                    <div class="panel-body">
+                        <input type="hidden" asp-for="RoleId" />
+                        <input type="hidden" asp-for="IsDelete" />
+                        <div class="form-group">
+                            <label>عنوان نقش</label>
+                            <input type="text" asp-for="RoleTitle" class="form-control">
+                        </div>
+                        <input type="submit" value="ذخیره اطلاعات" class="btn btn-success" />
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            دسترسی های نقش
+                        </i>
+                    </div>
+                    <!-- /.panel-heading -->
+                </div>
+                <div class="admintablebody">
+                    <div class="panel-body">
+                        @{
+                            List<int> SelectedPermissions = ViewData["SelectedPermissions"] as List<int>;
+                        }
+                        <ul>
+                            @foreach (var permission in permissions.Where(p => p.ParentID == null))
+                            {
+                                <li>
+                                    <input type="checkbox" name="SelectedPermission" @((SelectedPermissions.Any(p => p == permission.PermissionId) ? "checked" : "")) value="@permission.PermissionId" />&nbsp;<b> @permission.PermissionTitle</b>
+
+                                    @if (permissions.Any(p => p.ParentID == permission.ParentID))
+                                    {
+                                        <ul>
+                                            @foreach (var sub in permissions.Where(p => p.ParentID == permission.PermissionId))
+                                            {
+                                                <li>
+                                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                                                    <input type="checkbox" @((SelectedPermissions.Any(p => p == sub.PermissionId) ? "checked" : "")) name="SelectedPermission" value="@sub.PermissionId" /> @sub.PermissionTitle
+                                                    @if (permissions.Any(p => p.ParentID == sub.ParentID))
+                                                    {
+                                                        <ul>
+
+                                                            @foreach (var sub2 in permissions.Where(p => p.ParentID == sub.PermissionId))
+                                                            {
+                                                                <li>
+                                                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                                                                    <input type="checkbox" @((SelectedPermissions.Any(p => p == sub2.PermissionId) ? "checked" : "")) name="SelectedPermission" value="@sub2.PermissionId" /> @sub2.PermissionTitle
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+</div>
+

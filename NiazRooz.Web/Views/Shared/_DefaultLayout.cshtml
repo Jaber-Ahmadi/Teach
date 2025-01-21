@@ -1,0 +1,46 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> NiazRooz | @ViewData["Title"] </title>
+
+    <partial name="_MetaTags" />
+
+    <partial name="_Styles" />
+
+    @RenderSection("Styles", false)
+
+    <!--inline styles related to this page-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body   class="rtl skin-1 " style="cursor: auto;">
+    <!--NavBar-->
+    @await Component.InvokeAsync("NavBarComponents")
+    <!--EndNavBar-->
+    <div class="main-container container-fluid">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <partial name="_SideBar" />
+
+        <div class="main-content">
+
+            @RenderBody()
+
+        </div><!--/.main-content-->
+    </div><!--/.main-container-->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+    <partial name="_Scripts" />
+    @RenderSection("Scripts", false)
+    <div class="tooltip top in hide" style="display: none; top: 420px; left: 681px;">
+        <div class="tooltip-inner">search engines : 24.5%</div></div>
+
+
+</body>
+</html>

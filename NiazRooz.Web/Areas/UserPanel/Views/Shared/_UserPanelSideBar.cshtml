@@ -1,0 +1,75 @@
+﻿@using NiazRooz.DTO
+@using NiazRooz.Services
+@using NiazRooz.Utility
+@inject IUserService _UserService
+
+@{
+	SideBarUserPanelViewModel user = _UserService.GetSideBarUserPanelData(User.Identity.Name);
+}
+
+
+<div id="user-profile-3" class="user-profile row-fluid">
+	<div class="offset1 span10">
+		<div class="tabbable">
+			<ul class="nav nav-tabs padding-16">
+				<li class="active">
+					<a href="/UserPanel">
+						<i class="orange icon-laptop bigger-125"></i>
+						پنل کاربری
+					</a>
+				</li>
+				<li>
+					<a href="/EditProfile">
+						<i class="green icon-edit bigger-125"></i>
+						ویرایش حساب کاربری
+					</a>
+				</li>
+				<li>
+					<a href="/ChangePassword">
+						<i class="blue icon-key bigger-125"></i>
+						تغییر کلمه عبور
+					</a>
+				</li>
+				<li>
+					<a href="/ChangeProfileImage">
+						<i class="red icon-edit-sign bigger-125"></i>
+						تغییر تصویر کاربری
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content profile-edit-tab-content">
+				<div id="edit-basic" class="tab-pane in active">
+					<h4 class="header blue bolder smaller">مشخصات</h4>
+					<div class="profile-user-info profile-user-info-striped">
+						<div class="row-fluid">
+							<div class="profile-info-row">
+								<div class="profile-info-name"> نام کاربری </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="username"> @user.UserName </span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> ایمیل </div>
+
+								<div class="profile-info-value">
+									<span class="editable">@Model.Email</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> تاریخ ثبت نام </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="signup">@user.RegisterDate.ToShamsi()</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div><!--/span-->
+</div><!--/user-profile-->

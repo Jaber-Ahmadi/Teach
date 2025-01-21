@@ -1,0 +1,76 @@
+﻿@model NiazRooz.DTO.RegisterViewModel
+@{
+    ViewData["Title"] = "ثبت نام";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<link href="~/Login/Login.css" rel="stylesheet" />
+
+<div class="container register-container">
+    <div id="signup-box" class="signup-box visible widget-box no-border">
+        <div class="widget-body ">
+            <div class="widget-main  text-center">
+                <h4 class="header green lighter bigger">
+                    <i class="icon-group blue"></i>
+                    ثبت نام کاربر جدید
+                </h4>
+
+                <div class="space-6"></div>
+                <p> مشخصات خود را وارد کنید </p>
+
+                <form asp-action="Register" method="post">
+                    <fieldset>
+                        <label>
+                            <span class="block input-icon input-icon-right">
+                                <input asp-for="Email" type="text" class="span12" placeholder="ایمیل" >
+                                <i class="icon-envelope"></i>
+                            </span>
+                        </label>
+                        <span asp-validation-for="Email" class="red"></span>
+                        <label>
+                            <span class="block input-icon input-icon-right">
+                                <input asp-for="UserName" type="text" class="span12" placeholder="نام و نام خانوادگی" >
+                                <i class="icon-user"></i>
+                            </span>
+                        </label>
+                        <span asp-validation-for="UserName" class="red"></span>
+                        <label>
+                            <span class="block input-icon input-icon-right">
+                                <input asp-for="Password" type="password" class="span12l" placeholder="رمز عبور ">
+                                <i class="icon-lock"></i>
+                            </span>
+                        </label>
+                        <span asp-validation-for="Password" class="red"></span>
+                        <label>
+                            <span class="block input-icon input-icon-right">
+                                <input asp-for="RePassword" type="password" class="span12" placeholder="تکرار رمز عبور ">
+                                <i class="icon-retweet"></i>
+                            </span>
+                        </label>
+                        <span asp-validation-for="RePassword" class="red"></span>
+                        <div class="space-24"></div>
+
+                        <div class="clearfix">
+                            <button type="reset" class="width-30 pull-left btn btn-small warning-btn">
+                                <i class="icon-refresh"></i>
+                                پاک کردن
+                            </button>
+
+                            <button  class="width-65 pull-right btn btn-small btn-success">
+                                ثبت نام
+                                <i class="icon-arrow-right icon-on-right"></i>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="toolbar center">
+                <a href="/Login" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                    <i class="icon-arrow-left"></i>
+                    برگشت به صفحه ورود
+                </a>
+            </div>
+        </div><!--/widget-body-->
+    </div><!--/signup-box-->
+</div>

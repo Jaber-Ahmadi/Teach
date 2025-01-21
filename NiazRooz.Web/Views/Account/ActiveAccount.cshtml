@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "فعالسازی";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+<link href="~/Login/Login.css" rel="stylesheet" />
+
+<div class="container active-acount-container">
+    <div id="login-box" class="login-box visible widget-box no-border">
+        <div class="widget-body">
+            <div class="widget-main text-center">
+                <h4 class="header blue lighter bigger">
+                    فعال سازی حساب کاربری
+                </h4>
+
+                <div class="space-6"></div>
+
+                @if (ViewBag.IsActive)
+                {
+                    <div class="alert alert-success">
+                        <p>حساب کاربری شما با موفقیت فعال شد</p>
+                        <p>
+                            <a class="user-login-link hoverBtn" href="/Login">ورود </a>
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <p>حساب کاربری با مشخصات ارسال شده یافت نشد</p>
+                    </div>
+                }
+            </div><!--/widget-main-->
+
+            <div class="toolbar clearfix">
+                <div>
+                    <a href="/Login" onclick="show_box('forgot-box'); return false;" class="forgot-password-link user-login-link">
+                        <i class="icon-arrow-left"></i>
+                        ورود
+                    </a>
+                </div>
+
+                <div>
+                    <a href="/Register" onclick="show_box('signup-box'); return false;" class="user-signup-link">
+                        ثبت نام
+                        <i class="icon-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div><!--/widget-body-->
+    </div><!--/login-box-->
+</div>

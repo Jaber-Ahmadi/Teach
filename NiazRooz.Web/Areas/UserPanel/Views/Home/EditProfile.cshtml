@@ -1,0 +1,178 @@
+﻿@model NiazRooz.DTO.EditProfileViewModel
+@{
+    ViewData["Title"] = "ویرایش حساب کاربری";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/">نیاز روز</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li>
+            <a href="/Userpanel">پنل کاربری</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li class="active">ویرایش پروفایل</li>
+    </ul><!--.breadcrumb-->
+
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+            <span class="input-icon">
+                <input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+                <i class="icon-search nav-search-icon"></i>
+            </span>
+        </form>
+    </div><!--#nav-search-->
+</div>
+<br />
+<div class="page-content">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+            <div class="span9">
+                <div id="user-profile-3" class="user-profile row-fluid">
+                    <div class="offset1 span10">
+                        <form asp-action="EditProfile" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="AvatarName" />
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs padding-16">
+                                    <li >
+                                        <a href="/UserPanel">
+                                            <i class="orange icon-laptop bigger-125"></i>
+                                            پنل کاربری
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/EditProfile">
+                                            <i class="green icon-edit bigger-125"></i>
+                                            ویرایش حساب کاربری
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/ChangePassword">
+                                            <i class="blue icon-key bigger-125"></i>
+                                            تغییر کلمه عبور
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/ChangeProfileImage">
+                                            <i class="red icon-edit-sign bigger-125"></i>
+                                            تغییر تصویر کاربری
+                                        </a>
+                                    </li>
+                                </ul>
+                                @if (ViewBag.IsSuccess != null)
+                                {
+                                    <div class="alert alert-success">
+                                        اطلاعات کاربری شما با موفقیت ویرایش شد
+                                    </div>
+                                }
+
+                                <div class="tab-content profile-edit-tab-content">
+                                    <div id="edit-basic" class="tab-pane in active">
+                                        <h4 class="header blue bolder smaller">مشخصات</h4>
+
+                                        <div class="row-fluid">
+                                            <div class="span4">
+                                                <div class="text-center ace-file-input ace-file-multiple">
+                                                    <label data-title=" انتخاب تصویر جدید">
+                                                        <span class="profile-picture img-layer" data-title="No File ...">
+                                                            <input type="file" asp-for="UserAvatar" id="InputImageUserAvatar" class="hidden text-center" />
+                                                            <img class="thumbnail text-center" id="imgAvatarUserPanel" src="/UserAvatar/@Model.AvatarName" />
+                                                        </span>
+                                                    </label>
+                                                    <p class="blue-grey-text">لطفا فقط تصویر انتخاب کنید</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vspace"></div>
+                                            <div class="span8">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="form-field-username">نام کاربری</label>
+
+                                                    <div class="controls">
+
+                                                        <input type="text" id="form-field-username" class="form-control" asp-for="UserName" placeholder="نام کاربری" aria-describedby="username">
+                                                        <span class="red" asp-validation-for="UserName"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="space"></div>
+                                                <h4 class="header blue bolder smaller">اطلاعات تماس</h4>
+
+                                                <div class="control-group">
+                                                    <label class="control-label" for="form-field-email">ایمیل</label>
+
+                                                    <div class="controls">
+                                                        <span class="input-icon input-icon-right">
+                                                            <input type="text" id="form-field-email" class="form-control" asp-for="Email" placeholder="ایمیل" aria-describedby="email-address">
+                                                            <i class="icon-envelope"></i>
+                                                        </span>
+                                                        <span class="red" asp-validation-for="Email"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    ذخیره
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    تنظیم مجدد
+                                </button>
+                            </div>
+                            
+                        </form>
+                    </div><!--/span-->
+                </div><!--/user-profile-->
+            </div>
+            <div class="span3 center">
+                <partial name="_UserPanelControlSidBar" />
+            </div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+
+
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatarUserPanel').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#InputImageUserAvatar").change(function () {
+            readURL(this);
+        });
+    </script>
+}

@@ -1,0 +1,111 @@
+﻿@using NiazRooz.DomainClasses.Permissions
+@model NiazRooz.Web.Areas.Admin.Controllers.RolesController
+@{
+    List<Permission> permissions = ViewData["Permissions"] as List<Permission>;
+    ViewData["Title"] = "افزودن نقش";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/">نیاز روز</a>
+
+            <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+            </span>
+        </li>
+        <li class="active">افزودن نقش</li>
+    </ul><!--.breadcrumb-->
+</div>
+
+<br />
+<div class="row">
+    <form asp-action="CreateRoles" method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="text-center admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            افزودن نقش
+                        </i>
+                    </div>
+                    <!-- /.panel-heading -->
+                </div>
+                <div class="admintablebody">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>عنوان نقش</label>
+                            <input type="text" asp-for="role.RoleTitle" class="form-control">
+                        </div>
+                        <input asp-action="CreateRoles" type="submit" value="ذخیره اطلاعات" class="btn btn-success" />
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="text-center admintableheading">
+                    <div class="panel-heading">
+                        <i>
+                            دسترسی های نقش
+                        </i>
+
+                    </div>
+                    <!-- /.panel-heading -->
+                </div>
+                <div class="admintablebody">
+                    <div class="panel-body">
+                        <ul>
+                            @foreach (var permission in permissions.Where(p => p.ParentID == null))
+                            {
+                            <li>
+                                <input type="checkbox" name="SelectedPermission" value="@permission.PermissionId" />&nbsp;<b>@permission.PermissionTitle</b>
+
+                                @if (permissions.Any(p => p.ParentID == permission.ParentID))
+                                {
+                                    <ul>
+                                        @foreach (var sub in permissions.Where(p => p.ParentID == permission.PermissionId))
+                                        {
+                                            <li>
+                                                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="SelectedPermission" value="@sub.PermissionId" /> @sub.PermissionTitle
+                                                @if (permissions.Any(p => p.ParentID == sub.ParentID))
+                                                {
+                                                    <ul>
+
+                                                        @foreach (var sub2 in permissions.Where(p => p.ParentID == sub.PermissionId))
+                                                        {
+                                                            <li>
+                                                                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                                                                <input type="checkbox" name="SelectedPermission" value="@sub2.PermissionId" /> @sub2.PermissionTitle
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </form>
+</div>
+
+

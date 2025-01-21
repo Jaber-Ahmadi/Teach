@@ -1,0 +1,59 @@
+﻿@using NiazRooz.DTO
+@using NiazRooz.Services
+@using NiazRooz.Utility
+@inject IUserService _UserService
+
+@{
+    SideBarUserPanelViewModel user = _UserService.GetSideBarUserPanelData(User.Identity.Name);
+}
+
+<div>
+    <span class="profile-picture img-layer" >
+        <a title="تغییر تصویر" href="ChangeProfileImage" class="change-image">
+            <img alt="@user.ImageName" src="/UserAvatar/@user.ImageName" />
+        </a>        
+    </span>
+
+    <div class="space-4"></div>
+
+    <div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
+        <div class="inline position-relative">
+            <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-circle light-green middle"></i>
+                &nbsp;
+                <span class="white middle bigger-120">@user.UserName</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="space-6"></div>
+
+<div class="profile-contact-info">
+    <div class="profile-contact-links align-right">
+        <a class="btn btn-link" href="/UserPanel">
+            <i class="icon-laptop bigger-120 green"></i>
+            پنل کاربری
+        </a>
+        <a class="btn btn-link" href="/EditProfile">
+            <i class="icon-edit bigger-120 green"></i>
+            ویرایش حساب کابری
+        </a>
+
+        <a class="btn btn-link" href="/ChangePassword">
+            <i class="icon-key bigger-120 pink"></i>
+            تغییر کلمه عبور
+        </a>
+
+        <a class="btn btn-link" href="/Logout">
+            <i class="icon-exclamation-sign bigger-125 red"></i>
+            خروج
+        </a>
+    </div>
+
+    <div class="space-6"></div>
+</div>
+
+
+
+

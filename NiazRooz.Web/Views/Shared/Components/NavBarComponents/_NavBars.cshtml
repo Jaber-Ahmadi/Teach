@@ -1,0 +1,85 @@
+﻿@model string
+@{
+
+	var picture = "";
+	@if (Model != null)
+	{
+		picture = @Model;
+	}
+	else
+	{
+		picture = "Defult.jpg";
+	}
+}
+
+
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a href="/" class="brand">
+				<small class="titleColor">
+					<i></i>
+					نیاز روز
+				</small>
+			</a><!--/.brand-->
+
+			<ul class="nav ace-nav pull-left ">
+
+				@if (!User.Identity.IsAuthenticated)
+				{
+					<li class="purple no-border margin-1 light-green">
+						<a href="/Login" class="defaultlyouttextcolor" style="color: black"> ورود </a>
+					</li>
+					<li class="orange no-border margin-1 light-orange">
+						<a href="/Register" class="defaultlyouttextcolor" style="color: black"> عضویت </a>
+					</li>
+				}
+
+
+				<li class="light-blue no-border margin-1">
+					<a id="menu-profile" data-toggle="dropdown" href="#" class="dropdown-toggle menu-profile">
+						@if (User.Identity.IsAuthenticated)
+						{
+							<img src="/UserAvatar/@picture" alt="" class="nav-user-photo ">
+						}
+
+						<span class="user-info">
+
+							@if (User.Identity.IsAuthenticated)
+							{
+								@User.Identity.Name
+							}
+
+						</span>
+
+						<i class="icon-caret-down"></i>
+					</a>
+
+					<ul id="menu-profile-drop-down" class="user-menu dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+
+
+						<li>
+							<a href="Userpanel">
+								<i class="icon-user"></i>
+								پروفایل
+							</a>
+						</li>
+
+						<li class="divider"></li>
+
+						<li>
+							<a href="/Logout">
+								<i class="icon-off"></i>
+								خروج
+							</a>
+						</li>
+					</ul>
+
+
+				</li>
+			</ul>
+		</div><!--/.container-fluid-->
+	</div><!--/.navbar-inner-->
+</div>
+
+
