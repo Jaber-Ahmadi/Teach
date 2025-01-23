@@ -48,7 +48,7 @@ namespace NiazRooz.Datalayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=NiazRoozDB;Persist Security Info=True;User ID=sa;Password=Aa123456");
+                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=NiazRoozDB;Persist Security Info=True;Encrypt=false;");
             }
         }
 
